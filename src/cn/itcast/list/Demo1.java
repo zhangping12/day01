@@ -1,4 +1,4 @@
-package cn.itcase.list;
+package cn.itcast.list;
 
 import java.util.HashSet;
 
