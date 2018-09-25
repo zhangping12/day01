@@ -13,7 +13,7 @@ public class Demo2 {
 
         System.out.println("------------get方式遍历-----------");
         for (int i = 0; i < list.size() ; i++) {
-            System.out.print(list.get(i)+",");
+            System.out.println(list.get(i)+",");
         }
 
         //使用迭代器  注意：迭代器在迭代的过程中不能使用集合对象修改集合中的元素个数。如果需要修改要使用迭代器的方法进行修改，
