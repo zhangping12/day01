@@ -1,7 +1,12 @@
 package cn.itcast.introspector;
 
+import org.junit.Test;
+
+import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
+import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
 
 /*
 内省：---》一个变态的反射
@@ -10,14 +15,30 @@ import java.beans.PropertyDescriptor;
  */
 public class Demo2 {
 
-    public static void main(String[] args) {
+   @Test
+   public void getAllProperty() throws IntrospectionException {
+       //内省类
+       BeanInfo beanInfo = Introspector.getBeanInfo(Person.class);
+       //通过BeanInfo获取所有的属性描述其
+       PropertyDescriptor[] descriptors = beanInfo.getPropertyDescriptors();//获取一个类中的所有属性描述器
+       for (PropertyDescriptor p: descriptors) {
+           System.out.println(p.getReadMethod());//get方法
+       }
 
-    }
+   }
 
-    public static void testProperty() throws Exception {
+    @Test
+    public  void testProperty() throws Exception {
         Person p = new Person();
         //属性描述器
         PropertyDescriptor descriptor = new PropertyDescriptor("id",Person.class);
         //获取属性对应的get或者是set方法设置或者获取属性了
+        Method m = descriptor.getWriteMethod();//获取属性的set方法。
+        //执行该方法设置属性
+        m.invoke(p,110);
+
+        Method readMethod = descriptor.getReadMethod();//是获取属性的get方法
+        System.out.println(readMethod.invoke(p,null));
+
     }
 }

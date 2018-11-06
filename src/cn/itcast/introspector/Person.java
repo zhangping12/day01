@@ -1,10 +1,19 @@
 package cn.itcast.introspector;
 
+//实体类--javaBean
 public class Person {
 
-    int id;
+    private int id;
 
-    String name;
+    private String name;
+
+    public Person(int id, String name){
+        super();
+        this.id = id;
+        this.name = name;
+    }
+
+    public Person(){}
 
     public int getId() {
         return id;
@@ -21,14 +30,6 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Person(int id, String name){
-        super();
-        this.id = id;
-        this.name = name;
-    }
-
-    public Person(){}
 
     @Override
     public String toString() {
